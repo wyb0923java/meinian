@@ -1,0 +1,11 @@
+com\atguigu\service\OrderSettingServiceImpl.class
+com\atguigu\service\TravelgroupServiceImpl.class
+com\atguigu\service\HelloServiceImpl.class
+com\atguigu\service\OrderServiceImpl.class
+com\atguigu\service\TravelItemServiceImpl.class
+com\atguigu\service\UserServiceImpl.class
+com\atguigu\service\MemberServiceImpl.class
+com\atguigu\service\ReportServiceImpl.class
+com\atguigu\service\AddressServiceImpl.class
+com\atguigu\service\PermissionServiceImpl.class
+com\atguigu\service\SetmealServiceImpl.class

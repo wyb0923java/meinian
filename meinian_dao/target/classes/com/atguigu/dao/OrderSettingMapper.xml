@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.OrderSettingMapper">
+
+<!--    查（旅游预约上传文件，查看这个时间里是否有数据）-->
+    <select id="countByDate" resultType="_long">
+        select count(*) from t_ordersetting where orderDate=#{orderdate}
+    </select>
+
+<!--    改（旅游预约上传文件，查看这个时间里是否有数据，有数据，调用改）-->
+    <update id="updateNumberByDate">
+        update t_ordersetting set number=#{number} where orderDate=#{orderdate}
+    </update>
+
+<!--    增（旅游预约上传文件，查看这个时间里是否有数据，没数据，调用增）-->
+    <insert id="insert">
+        insert into t_ordersetting(orderDate,number) values(#{orderdate},#{number})
+    </insert>
+
+    <select id="getOrderSettingByMonth" resultType="com.atguigu.pojo.OrderSetting">
+        select id,orderDate,number,reservations from t_ordersetting where orderDate like #{date}
+    </select>
+
+
+    <update id="editNumberByDate">
+        update t_ordersetting set number = #{number} where orderDate = #{orderdate}
+    </update>
+
+    <select id="getOrderSettingByDate" resultType="com.atguigu.pojo.OrderSetting">
+          select id,orderDate orderdate,number,reservations from t_ordersetting where orderDate = #{date1}
+     </select>
+
+    <update id="increaseReservations">
+          update t_ordersetting set reservations = reservations+1 where orderDate = #{orderDate}
+     </update>
+    <update id="updateReservations">
+            update t_ordersetting set reservations = #{reservations} where orderDate = #{orderdate}
+     </update>
+
+</mapper>

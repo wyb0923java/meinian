@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.TravelgroupTravelitemMapper">
+
+<!--    跟团游中（增 到中间表）-->
+    <insert id="insert">
+        insert into t_travelgroup_travelitem values
+        <foreach collection="tids" item="tid" separator=",">
+            (#{id},#{tid})
+        </foreach>
+
+    </insert>
+
+<!--    跟团游中（查询 中间表）-->
+    <select id="findTravelItemIdByTravelgroupId" resultType="java.lang.Integer">
+         select travelitem_id from  t_travelgroup_travelitem  where travelgroup_id = #{id}
+    </select>
+
+<!--    跟团游中（删除 中间表）（目的：在修改中，先将中间表中的信息通过id删除，在通过上面的insert添加修改后的数据）-->
+    <delete id="deleteByTravelGroupId">
+        delete from t_travelgroup_travelitem where travelgroup_id=#{id}
+    </delete>
+</mapper>
